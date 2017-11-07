@@ -79,7 +79,6 @@ Life.counter = 0;
 Life.state = Life.stop;
 Life.interval = null;
 
-
 export class Cell {
   constructor(row, column) {
     this.row = row;
