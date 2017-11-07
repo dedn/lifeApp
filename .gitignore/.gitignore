@@ -1,8 +1,0 @@
-*.idea/
-
-.gitignore
-npm-debug.log
-npm-debug.log.2609518590
-package-lock.json
-
-node_modules/
