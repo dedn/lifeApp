@@ -9,8 +9,8 @@ The "game" is a zero-player game, meaning that its evolution is determined by it
 Link demo http://dedn.github.io/lifeapp/
 
 ### project structure
-    dist /       :compiled js                                
-    src /   :folder for development, use es6
+    dist         /   :compiled js                                
+    src          /   :folder for development, use es6
     index.html
                          
  ## running the project for development
