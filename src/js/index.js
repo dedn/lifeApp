@@ -1,10 +1,11 @@
 'use strict'
 
-import {Life, arr, Cell} from "./model";
+import {Life, arr} from "./model";
 import {grid} from "./controler";
-
+import {getCursorPosition} from "./model";
 
 const counterField = document.getElementById("counter");
+var context = grid.getContext('2d');
 
 export function updateAnimations() {
   for (let h = 0; h < Life.height; h++) {
@@ -30,8 +31,6 @@ export function update() {
 }
 
 
-var context = grid.getContext('2d');
-
 export function start() {
 
   if (Life.state == Life.stop) {
@@ -54,7 +53,9 @@ export function resetField() {
   updateAnimations();
 }
 
-
+/**
+ * Mark the playing field
+ */
 for (let x = 0; x <= Life.size_x; x += Life.size_cell) {
   context.moveTo(0.5 + x, 0);
   context.lineTo(0.5 + x, Life.size_y);
@@ -63,7 +64,7 @@ for (let y = 0; y <= Life.size_y; y += Life.size_cell) {
   context.moveTo(0, 0.5 + y);
   context.lineTo(Life.size_x, 0.5 + y);
 }
-context.strokeStyle = "#254117";
+context.strokeStyle = "#254111";
 context.stroke();
 
 export function ClickHandler(event) {
@@ -73,23 +74,6 @@ export function ClickHandler(event) {
   updateAnimations();
 }
 
-function getCursorPosition({pageX, pageY, clientX, clientY}) {
-  let x;
-  let y;
-  if (pageX || pageY) {
-    x = pageX;
-    y = pageY;
-  } else {
-    x = clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-    y = clientY + document.body.scrollTop + document.documentElement.scrollTop;
-  }
-
-  x -= grid.offsetLeft;
-  y -= grid.offsetTop;
-
-  const cell = new Cell(Math.floor((y - 4) / Life.size_cell), Math.floor((x - 2) / Life.size_cell));
-  return cell;
-}
 
 
 

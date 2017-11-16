@@ -81,109 +81,104 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+
 const counterField = document.getElementById("counter");
+var context = __WEBPACK_IMPORTED_MODULE_1__controler__["a" /* grid */].getContext('2d');
 
 function updateAnimations() {
-  for (let h = 0; h < __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].height; h++) {
-    for (let w = 0; w < __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].width; w++) {
-      if (__WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].grid[h][w] === __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].aсtive_live) {
+  for (let h = 0; h < __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].height; h++) {
+    for (let w = 0; w < __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].width; w++) {
+      if (__WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].grid[h][w] === __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].aсtive_live) {
         context.fillStyle = "#000";
       } else {
         context.fillStyle = "#8dcc7f";
       }
-      context.fillRect(w * __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].size_cell + 1, h * __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].size_cell + 1, __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].size_cell - 1, __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].size_cell - 1);
+      context.fillRect(w * __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].size_cell + 1, h * __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].size_cell + 1, __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].size_cell - 1, __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].size_cell - 1);
     }
   }
-  counterField.innerHTML = __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].counter;
-};
+  counterField.innerHTML = __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].counter;
+}
 
 function update() {
-  __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].updateState();
+  __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].updateState();
   updateAnimations();
-};
-
-var context = __WEBPACK_IMPORTED_MODULE_1__controler__["a" /* grid */].getContext('2d');
+}
 
 function start() {
 
-  if (__WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].state == __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].stop) {
-    __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].interval = setInterval(() => {
+  if (__WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].state == __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].stop) {
+    __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].interval = setInterval(() => {
       update();
-    }, __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].delay);
-    __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].state = __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].run;
+    }, __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].delay);
+    __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].state = __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].run;
   } else {
-    clearInterval(__WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].interval);
-    __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].state = __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].stop;
+    clearInterval(__WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].interval);
+    __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].state = __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].stop;
   }
 }
 
 function resetField() {
-  __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].grid = Object(__WEBPACK_IMPORTED_MODULE_0__model__["c" /* arr */])(__WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].height, __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].width, 0);
-  __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].counter = 0;
-  clearInterval(__WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].interval);
-  __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].state = __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].stop;
+  __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].grid = Object(__WEBPACK_IMPORTED_MODULE_0__model__["b" /* arr */])(__WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].height, __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].width, 0);
+  __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].counter = 0;
+  clearInterval(__WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].interval);
+  __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].state = __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].stop;
   updateAnimations();
 }
 
-for (let x = 0; x <= __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].size_x; x += __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].size_cell) {
+/**
+ * Mark the playing field
+ */
+for (let x = 0; x <= __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].size_x; x += __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].size_cell) {
   context.moveTo(0.5 + x, 0);
-  context.lineTo(0.5 + x, __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].size_y);
+  context.lineTo(0.5 + x, __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].size_y);
 }
-for (let y = 0; y <= __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].size_y; y += __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].size_cell) {
+for (let y = 0; y <= __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].size_y; y += __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].size_cell) {
   context.moveTo(0, 0.5 + y);
-  context.lineTo(__WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].size_x, 0.5 + y);
+  context.lineTo(__WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].size_x, 0.5 + y);
 }
-context.strokeStyle = "#254117";
+context.strokeStyle = "#254111";
 context.stroke();
 
 function ClickHandler(event) {
-  const cell = getCursorPosition(event);
-  const state = __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].grid[cell.row][cell.column] == __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].aсtive_live ? __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].dead : __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].aсtive_live;
-  __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].grid[cell.row][cell.column] = state;
+  const cell = Object(__WEBPACK_IMPORTED_MODULE_0__model__["c" /* getCursorPosition */])(event);
+  const state = __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].grid[cell.row][cell.column] == __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].aсtive_live ? __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].dead : __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].aсtive_live;
+  __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Life */].grid[cell.row][cell.column] = state;
   updateAnimations();
-};
-
-function getCursorPosition({ pageX, pageY, clientX, clientY }) {
-  let x;
-  let y;
-  if (pageX || pageY) {
-    x = pageX;
-    y = pageY;
-  } else {
-    x = clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-    y = clientY + document.body.scrollTop + document.documentElement.scrollTop;
-  }
-
-  x -= __WEBPACK_IMPORTED_MODULE_1__controler__["a" /* grid */].offsetLeft;
-  y -= __WEBPACK_IMPORTED_MODULE_1__controler__["a" /* grid */].offsetTop;
-
-  const cell = new __WEBPACK_IMPORTED_MODULE_0__model__["a" /* Cell */](Math.floor((y - 4) / __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].size_cell), Math.floor((x - 2) / __WEBPACK_IMPORTED_MODULE_0__model__["b" /* Life */].size_cell));
-  return cell;
-};
+}
 
 /***/ }),
 /* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return arr; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return arr; });
+/* harmony export (immutable) */ __webpack_exports__["c"] = getCursorPosition;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__controler__ = __webpack_require__(2);
 
 
+
+
+/**
+ * Game Matrix
+ */
 let arr = Array.matrix = (m, n) => {
   let a;
+  let b;
   let i;
-  let j;
   const mat = [];
   for (i = 0; i < m; i += 1) {
     a = [];
-    for (j = 0; j < n; j += 1) {
-      a[j] = 0;
+    for (b = 0; b < n; b += 1) {
+      a[b] = 0;
     }
     mat[i] = a;
   }
   return mat;
 };
 
+/**
+ * Game Logic
+ */
 class Life {
 
   static updateState() {
@@ -227,7 +222,7 @@ class Life {
     }
   }
 }
-/* harmony export (immutable) */ __webpack_exports__["b"] = Life;
+/* harmony export (immutable) */ __webpack_exports__["a"] = Life;
 
 
 Life.size_y = 400;
@@ -255,8 +250,26 @@ class Cell {
     this.column = column;
   }
 }
-/* harmony export (immutable) */ __webpack_exports__["a"] = Cell;
+/* unused harmony export Cell */
 
+
+function getCursorPosition({ pageX, pageY, clientX, clientY }) {
+  let x;
+  let y;
+  if (pageX || pageY) {
+    x = pageX;
+    y = pageY;
+  } else {
+    x = clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+    y = clientY + document.body.scrollTop + document.documentElement.scrollTop;
+  }
+
+  x -= __WEBPACK_IMPORTED_MODULE_0__controler__["a" /* grid */].offsetLeft;
+  y -= __WEBPACK_IMPORTED_MODULE_0__controler__["a" /* grid */].offsetTop;
+
+  const cell = new Cell(Math.floor((y - 4) / Life.size_cell), Math.floor((x - 2) / Life.size_cell));
+  return cell;
+}
 
 /***/ }),
 /* 2 */
@@ -271,12 +284,14 @@ class Cell {
 const grid = document.getElementById('grid');
 /* harmony export (immutable) */ __webpack_exports__["a"] = grid;
 
-
 const startBtn = document.getElementById("startBtn");
 const resetBtn = document.getElementById("resetBtn");
 
 grid.addEventListener("click", __WEBPACK_IMPORTED_MODULE_0__index__["ClickHandler"], false);
 
+/**
+ * Control button
+ */
 startBtn.onclick = () => {
   Object(__WEBPACK_IMPORTED_MODULE_0__index__["start"])();
 };
