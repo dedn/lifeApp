@@ -30,7 +30,6 @@ export function update() {
   updateAnimations();
 }
 
-
 export function start() {
 
   if (Life.state == Life.stop) {
